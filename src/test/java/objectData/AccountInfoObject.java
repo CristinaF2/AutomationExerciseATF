@@ -14,6 +14,7 @@ public class AccountInfoObject {
     private String year;
     private Boolean newsletter;
     private Boolean specialOffers;
+    private String accountCreatedMessage;
 
     public AccountInfoObject(HashMap<String,String> testData){
         populateObject(testData);
@@ -48,6 +49,8 @@ public class AccountInfoObject {
                 case "specialOffers":
                     setSpecialOffers(Boolean.parseBoolean(testData.get(key)));
                     break;
+                case "accountCreatedMessage":
+                    setAccountCreatedMessage(testData.get(key));
             }
         }
 

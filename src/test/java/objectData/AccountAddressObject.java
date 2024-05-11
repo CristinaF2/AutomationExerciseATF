@@ -55,6 +55,7 @@ public class AccountAddressObject {
                 case "mobileNumber":
                     setMobileNumber(testData.get(key));
                     break;
+
             }
         }
 

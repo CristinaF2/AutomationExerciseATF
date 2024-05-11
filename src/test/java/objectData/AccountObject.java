@@ -7,7 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.awt.print.Book;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Data
 public class AccountObject {
@@ -16,6 +19,7 @@ public class AccountObject {
     private String password;
     private AccountInfoObject accountInfo;
     private AccountAddressObject accountAddress;
+    private List<String> products;
 
     public AccountObject(HashMap<String,String> testData){
         populateObject(testData);
@@ -34,10 +38,22 @@ public class AccountObject {
                 case "password":
                     setPassword(testData.get(key));
                     break;
+                case "products":
+                    prepareProducts(testData.get(key));
+                    break;
+
             }
         }
 
     }
+
+    private void prepareProducts(String value){
+
+        String[] productsArray=value.split(",");
+        products =new ArrayList<>( Arrays.asList( productsArray));
+
+    }
+
 
 
 }
