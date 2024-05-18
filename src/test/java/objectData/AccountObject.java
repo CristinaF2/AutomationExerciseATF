@@ -14,7 +14,7 @@ public class AccountObject {
     private String password;
     private AccountInfoObject accountInfo;
     private AccountAddressObject accountAddress;
-    private List<String> products;
+    private List<ProductObject> products;
 
     public AccountObject(HashMap<String,String> testData){
         populateObject(testData);
@@ -41,7 +41,16 @@ public class AccountObject {
     }
 
     private void prepareProducts(String value){
+        products = new ArrayList<>();
         String[] productsArray=value.split(",");
-        products =new ArrayList<>( Arrays.asList( productsArray));
+        for (int index = 0; index<productsArray.length; index++){
+            String currentElement = productsArray[index];
+            String[] productArray = currentElement.split("-");
+
+            String title = productArray[0];
+            String price = productArray[1];
+            Integer quantity = Integer.valueOf(productArray[2]);
+            products.add(new ProductObject(title, price, quantity));
+        }
     }
 }

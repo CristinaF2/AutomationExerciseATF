@@ -1,6 +1,7 @@
 package pages;
 
 import objectData.AccountObject;
+import objectData.ProductObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,8 +25,8 @@ public class ProductsPage extends  BasePage{
     private WebElement productPicture;
 
     public void addProductToCart(AccountObject accountObject){
-        for(String product: accountObject.getProducts()){
-            elementMethods.fillElement(searchBar,product);
+        for(ProductObject product: accountObject.getProducts()){
+            elementMethods.fillElement(searchBar, product.getTitle());
             elementMethods.clickOnElement(submitSearch);
             elementMethods.hoverElement(productPicture);
             elementMethods.clickOnElementWithJS(addToCartProduct);

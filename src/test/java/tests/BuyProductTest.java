@@ -32,5 +32,9 @@ public class BuyProductTest extends SharedData {
 
         ViewCartPage viewCartPage = new ViewCartPage(getWebDriver());
         viewCartPage.proceedCheckoutProcess(accountObject);
+
+        //adaptez codul dupa cantitate
+        //calculez pretul total pentru fiecare produs
+        //validari pe pagina de checkout
     }
 }
