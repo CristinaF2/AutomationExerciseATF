@@ -8,66 +8,49 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class SignUpPage extends BasePage {
+
     public SignUpPage(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(xpath = "//input[@type='radio']")
     private List<WebElement> titleOptions;
-
     @FindBy(xpath = "//input[@type='password']")
     private WebElement password;
-
     @FindBy(id = "days")
     private WebElement day;
-
     @FindBy(id = "months")
     private WebElement month;
-
     @FindBy(id = "years")
     private WebElement year;
-
     @FindBy(xpath = "//label[@for='newsletter']")
     private WebElement signUpForNewsletter;
-
     @FindBy(xpath = "//label[@for='optin']")
     private WebElement receiveSpecialOffers;
-
     @FindBy(id = "first_name")
     private WebElement firstName;
-
     @FindBy(id = "last_name")
     private WebElement lastName;
-
     @FindBy(id = "company")
     private WebElement company;
-
     @FindBy(id = "address1")
     private WebElement address1;
-
     @FindBy(id = "address2")
     private WebElement address2;
-
     @FindBy(id = "country")
     private WebElement country;
-
     @FindBy(id = "state")
     private WebElement state;
-
     @FindBy(id = "city")
     private WebElement city;
-
     @FindBy(id = "zipcode")
     private WebElement zipcode;
-
     @FindBy(id = "mobile_number")
     private WebElement mobileNumber;
-
     @FindBy(xpath = "//button[@data-qa='create-account']")
     private WebElement createAccount;
 
     public void fillSignUpForm(AccountObject accountObject) {
-
         if (accountObject.getAccountInfo().getTitle().equals("Mr")) {
             elementMethods.clickOnElement(titleOptions.get(0));
         } else {
@@ -95,6 +78,4 @@ public class SignUpPage extends BasePage {
         elementMethods.fillElement(mobileNumber,accountObject.getAccountAddress().getMobileNumber());
         elementMethods.clickOnElement(createAccount);
     }
-
-
 }

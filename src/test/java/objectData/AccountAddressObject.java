@@ -16,6 +16,7 @@ public class AccountAddressObject {
     private String city;
     private String zipCode;
     private String mobileNumber;
+
     public AccountAddressObject(HashMap<String,String> testData){
         populateObject(testData);
     }
@@ -55,11 +56,7 @@ public class AccountAddressObject {
                 case "mobileNumber":
                     setMobileNumber(testData.get(key));
                     break;
-
             }
         }
-
     }
-
-
 }

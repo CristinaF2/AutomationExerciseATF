@@ -51,9 +51,9 @@ public class AccountInfoObject {
                     break;
                 case "accountCreatedMessage":
                     setAccountCreatedMessage(testData.get(key));
+                    break;
             }
         }
-
     }
 
 }

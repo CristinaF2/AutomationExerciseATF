@@ -18,7 +18,5 @@ public class SharedData {
         webDriver=new ChromeDriver(options);
         webDriver.get("https://automationexercise.com/");
         webDriver.manage().window().maximize();
-
     }
-
 }

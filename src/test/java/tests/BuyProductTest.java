@@ -1,6 +1,5 @@
 package tests;
 
-import objectData.AccountInfoObject;
 import objectData.AccountObject;
 import org.testng.annotations.Test;
 import pages.*;
@@ -11,12 +10,11 @@ public class BuyProductTest extends SharedData {
 
     @Test
     public void testMethod(){
-
-        PropertyUtility propertyUtility=new PropertyUtility("testData/BuyProductData");
+        PropertyUtility propertyUtility = new PropertyUtility("testData/BuyProductData");
         AccountObject accountObject=new AccountObject(propertyUtility.getAllData());
 
         HomePage homePage=new HomePage(getWebDriver());
-        homePage.navigateMenuOption("Signup / Login");
+        homePage.navigateMenuOption(PageType.MENU_SIGNUPLOGIN);
 
         LoginRegisterPage loginRegisterPage=new LoginRegisterPage(getWebDriver());
         loginRegisterPage.fillSignUpForm(accountObject);
@@ -26,12 +24,13 @@ public class BuyProductTest extends SharedData {
 
         AccountCreatedPage accountCreatedPage=new AccountCreatedPage(getWebDriver());
         accountCreatedPage.validateAccountCreated(accountObject);
-        accountCreatedPage.navigateMenuOption("Products");
+        accountCreatedPage.navigateMenuOption(PageType.MENU_PRODUCTS);
 
         ProductsPage productsPage=new ProductsPage(getWebDriver());
         productsPage.addProductToCart(accountObject);
+        productsPage.navigateMenuOption(PageType.MENU_CART);
 
+        ViewCartPage viewCartPage = new ViewCartPage(getWebDriver());
+        viewCartPage.proceedCheckoutProcess(accountObject);
     }
-
-
 }

@@ -1,12 +1,7 @@
 package objectData;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,19 +36,12 @@ public class AccountObject {
                 case "products":
                     prepareProducts(testData.get(key));
                     break;
-
             }
         }
-
     }
 
     private void prepareProducts(String value){
-
         String[] productsArray=value.split(",");
         products =new ArrayList<>( Arrays.asList( productsArray));
-
     }
-
-
-
 }

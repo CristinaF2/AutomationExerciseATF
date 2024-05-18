@@ -30,17 +30,11 @@ public class BasePage {
     protected List<WebElement> menuOptions;
 
     public void navigateMenuOption(String option) {
-
         for (int index = 0; index < menuOptions.size(); index++) {
-
             if (menuOptions.get(index).getText().contains(option)) {
                 menuOptions.get(index).click();
                 break;
             }
-
         }
-
     }
-
-
 }
