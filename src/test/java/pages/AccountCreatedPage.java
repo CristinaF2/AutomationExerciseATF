@@ -20,9 +20,12 @@ public class AccountCreatedPage extends BasePage {
     @FindBy(xpath = "//div/a[@data-qa='continue-button']")
     private WebElement continueButton;
 
+    @FindBy(xpath = "//span[text()='Close']")
+    private WebElement closeButton;
 
     public void validateAccountCreated(AccountObject accountObject){
         Assert.assertEquals(accountObject.getAccountInfo().getAccountCreatedMessage(),accountCreatedMessage.getText());
         elementMethods.clickOnElement(continueButton);
+        driver.navigate().refresh();
     }
 }

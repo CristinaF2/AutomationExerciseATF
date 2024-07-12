@@ -15,11 +15,15 @@ public class AccountObject {
     private AccountInfoObject accountInfo;
     private AccountAddressObject accountAddress;
     private List<ProductObject> products;
+    private Integer totalPrice;
+    private CardObject cardObject;
 
     public AccountObject(HashMap<String,String> testData){
         populateObject(testData);
         accountInfo=new AccountInfoObject(testData);
         accountAddress=new AccountAddressObject(testData);
+        cardObject=new CardObject(testData);
+        calculateFinalPrice();
     }
 
     //metoda care populeaza acest obiect
@@ -53,4 +57,12 @@ public class AccountObject {
             products.add(new ProductObject(title, price, quantity));
         }
     }
+
+    private void calculateFinalPrice(){
+        totalPrice=0;
+        for(ProductObject productObject:products){
+            totalPrice=totalPrice+productObject.getFinalPrice();
+        }
+    }
+
 }

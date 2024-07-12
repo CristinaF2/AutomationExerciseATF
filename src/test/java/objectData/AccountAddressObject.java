@@ -16,16 +16,17 @@ public class AccountAddressObject {
     private String city;
     private String zipCode;
     private String mobileNumber;
+    private String comment;
 
-    public AccountAddressObject(HashMap<String,String> testData){
+    public AccountAddressObject(HashMap<String, String> testData) {
         populateObject(testData);
     }
 
     //metoda care populeaza acest obiect
-    private void populateObject(HashMap<String,String> testData){
+    private void populateObject(HashMap<String, String> testData) {
 
-        for (String key: testData.keySet()){
-            switch (key){
+        for (String key : testData.keySet()) {
+            switch (key) {
                 case "firstName":
                     setFirstName(testData.get(key));
                     break;
@@ -55,6 +56,9 @@ public class AccountAddressObject {
                     break;
                 case "mobileNumber":
                     setMobileNumber(testData.get(key));
+                    break;
+                case "comment":
+                    setComment(testData.get(key));
                     break;
             }
         }

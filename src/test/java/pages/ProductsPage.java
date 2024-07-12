@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductsPage extends  BasePage{
+public class ProductsPage extends BasePage {
 
 
     public ProductsPage(WebDriver driver) {
@@ -24,13 +24,21 @@ public class ProductsPage extends  BasePage{
     @FindBy(xpath = "//img[@alt='ecommerce website products']")
     private WebElement productPicture;
 
-    public void addProductToCart(AccountObject accountObject){
-        for(ProductObject product: accountObject.getProducts()){
+    public void addProductToCart(AccountObject accountObject) {
+        for (ProductObject product : accountObject.getProducts()) {
             elementMethods.fillElement(searchBar, product.getTitle());
             elementMethods.clickOnElement(submitSearch);
-            elementMethods.hoverElement(productPicture);
-            elementMethods.clickOnElementWithJS(addToCartProduct);
-            elementMethods.clickOnElementWithJS(continueShoppingButton);
+            if (product.getQuantity() > 1) {
+                for (int index = 0; index < product.getQuantity(); index++) {
+                    elementMethods.hoverElement(productPicture);
+                    elementMethods.clickOnElementWithJS(addToCartProduct);
+                    elementMethods.clickOnElementWithJS(continueShoppingButton);
+                }
+            } else {
+                elementMethods.hoverElement(productPicture);
+                elementMethods.clickOnElementWithJS(addToCartProduct);
+                elementMethods.clickOnElementWithJS(continueShoppingButton);
+            }
             elementMethods.clearElement(searchBar);
         }
     }

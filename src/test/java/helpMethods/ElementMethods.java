@@ -7,6 +7,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.io.File;
 import java.time.Duration;
 
 public class ElementMethods {
@@ -28,7 +31,14 @@ public class ElementMethods {
     public void fillElement(WebElement element, String value) {
         element.sendKeys(value);
     }
+    public void uploadFile(WebElement element,String path){
+        File file=new File(path);
+        fillElement(element,file.getAbsolutePath());
+    }
 
+    public void checkText(WebElement element, String text){
+        Assert.assertEquals(element.getText(),text);
+    }
     public void scrollOnPage(Integer x, Integer y) {
         //facem scroll ca elementul sa fie vizibil
         //il folosim cand metodele standard din selenium nu ne ajuta

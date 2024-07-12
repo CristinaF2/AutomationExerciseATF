@@ -15,16 +15,20 @@ public class AccountInfoObject {
     private Boolean newsletter;
     private Boolean specialOffers;
     private String accountCreatedMessage;
+    private String confirmedOrderMessage;
+    private String subject;
+    private String contactMessage;
+    private String successfullySentContactMessage;
 
-    public AccountInfoObject(HashMap<String,String> testData){
+    public AccountInfoObject(HashMap<String, String> testData) {
         populateObject(testData);
     }
 
     //metoda care populeaza acest obiect
-    private void populateObject(HashMap<String,String> testData){
+    private void populateObject(HashMap<String, String> testData) {
 
-        for (String key: testData.keySet()){
-            switch (key){
+        for (String key : testData.keySet()) {
+            switch (key) {
                 case "password":
                     setPassword(testData.get(key));
                     break;
@@ -52,8 +56,17 @@ public class AccountInfoObject {
                 case "accountCreatedMessage":
                     setAccountCreatedMessage(testData.get(key));
                     break;
+                case "confirmedOrderMessage":
+                    setConfirmedOrderMessage(testData.get(key));
+                    break;
+                case "subject":
+                    setSubject(testData.get(key));
+                case "contactMessage":
+                    setContactMessage(testData.get(key));
+                case "successfullySentContactMessage":
+                    setSuccessfullySentContactMessage(testData.get(key));
+
             }
         }
     }
-
 }
